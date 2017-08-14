@@ -1,0 +1,70 @@
+#game, #hud, .layer, .bg, .fg, .paused{
+	width: 64px;
+	height: 64px;
+    margin: 0;
+    padding: 0;
+}
+.layer{
+    position: absolute;
+    top: 0;
+    left:0;
+}
+.bg, .fg{
+    position: absolute;
+    top: 0;
+}
+#hero{
+    position: absolute;
+    left: 2px;
+    width: 16px;
+    height: 18px;
+    top: 44;
+}
+#hero, .shot, .missile, .enemy, .boss{
+    position: absolute;
+    transition: all 0.1s;
+}
+
+#hud, #special{
+    z-index: 1000;
+}
+
+.paused{
+    background: rgba(255,255,255,0.2);
+    z-index: 1000;
+}
+
+#bg1,#fg1{
+    left:0;
+}
+#bg2,#fg2{
+    left:64;
+}
+#bg3,#fg3{
+    left:128;
+}
+#bg4,#fg4{
+    left:192;
+}
+#bg5,#fg5{
+    left:256;
+}
+#bg6,#fg6{
+    left:320;
+}
+#bg7,#fg7{
+    left:384;
+}
+#bg8,#fg8{
+    left:448;
+}
+
+.typeA1{
+    background: transparent url(../img/bga1.gif);
+}
+.typeA2{
+    background: transparent url(../img/bga2.gif);
+}
+.typeA3{
+    background: transparent url(../img/bga3.gif);
+}

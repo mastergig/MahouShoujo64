@@ -1,0 +1,17 @@
+body,html{
+	background: white;
+    color: black;
+}
+#hero{
+	background: transparent url(../other/1.gif);
+}
+.shot{
+	width: 5px;
+	height: 5px;
+	background: purple;
+}
+.enemy{
+	width: 12px;
+	height: 9px;
+	background: transparent url(../other/bat.gif);
+}
