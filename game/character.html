@@ -7,7 +7,7 @@
 			var x = 0;
 			function moveBG()
 			{
-				document.body.style.backgroundImage = 'url(../img/bga2.gif)';
+				document.body.style.backgroundImage = 'url(../img/bgb1.gif)';
 				document.body.style.backgroundPosition = x + 'px 0';
 				x--;
     			setTimeout(function(){ moveBG(); }, 100);
@@ -16,8 +16,12 @@
 	</head>
 	
 	<body onload="moveBG()">
-		<a id="title" href='character.html'>
-			&nbsp;
-		</a>
+		<div id="characters">
+			<a href="teste.html?hero=1"><img src="../img/1.gif"></a>
+			<a href="teste.html?hero=2"><img src="../img/2.gif"></a>
+			<a href="teste.html?hero=3"><img src="../img/3.gif"></a>
+			<a href="teste.html?hero=4"><img src="../img/4.gif"></a>
+			<a href="teste.html?hero=5"><img src="../img/5.gif"></a>
+		</div>
 	</body>
 </html>

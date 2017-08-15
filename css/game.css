@@ -182,3 +182,20 @@
     text-decoration: none;
     display: block;
 }
+#characters{
+    padding-top: 43;
+}
+#characters a{
+    margin: 0;
+    width: 12px;
+    height: 18px;
+    text-decoration: none;
+    display: block;
+    float: left;
+    padding: 0;
+    z-index: 10;
+    position:relative;
+}
+#characters a:hover{
+    z-index: 1000 !important;
+}

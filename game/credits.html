@@ -7,16 +7,14 @@
 			var x = 0;
 			function moveBG()
 			{
-				document.body.style.backgroundImage = 'url(../img/bga2.gif)';
-				document.body.style.backgroundPosition = x + 'px 0';
-				x--;
-    			setTimeout(function(){ moveBG(); }, 100);
+				document.body.style.backgroundImage = 'url(../img/credits.gif)';
+				title.style.backgroundImage = 'none';
 			}
 		</script>
 	</head>
 	
 	<body onload="moveBG()">
-		<a id="title" href='character.html'>
+		<a id="title" href='title.html'>
 			&nbsp;
 		</a>
 	</body>
