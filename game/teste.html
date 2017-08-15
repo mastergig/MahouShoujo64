@@ -6,12 +6,25 @@
 		<script type='text/javascript' src="../js/new_game.js"></script>
 		<script type='text/javascript' src="../js/function.js"></script>
 		<script type='text/javascript' src="../js/game_run.js"></script>
+		<script type='text/javascript' src="../js/game_functions.js"></script>
 	</head>
 	
-	<body onload="readRun()">
+	<body onload="readRun()" onkeypress="jogoKeyPress(event)" onkeyup="jogoKeyRelease(event)" onkeydown="jogoKeyHold(event)">
 		<div id="game">
 			<div id="hud" class="layer"> <!-- HUD ELEMENTS -->
-				<div id="teste" style="background: white; height: 5px; width: 64px; opacity: 0.5;"></div>
+				<div id="teste" style="background: white url(../img/score.gif) no-repeat top left; height: 5px; width: 42px; opacity: 0.5; padding-left: 22px;">
+					<div id='score1' class='numbA n0'></div>
+					<div id='score2' class='numbB n0'></div>
+					<div id='score3' class='numbA n0'></div>
+					<div id='score4' class='numbB n0'></div>
+					<div id='score5' class='numbA n0'></div>
+					<div id='score6' class='numbB n0'></div>
+					<div id='score7' class='numbA n0'></div>
+					
+					<div id='heart1' class='heart h2'></div>
+					<div id='heart2' class='heart h2'></div>
+					<div id='heart3' class='heart h2'></div>
+				</div>
 			</div>
 			<div id="background" class="layer"> <!-- BACKGROUND ELEMENTS -->
 				<div id="bg1" class="bg typeA1"></div>
