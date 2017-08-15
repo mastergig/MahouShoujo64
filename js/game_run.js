@@ -54,6 +54,7 @@ function readRun() //run the game by the time
         //
         calcHero();
         calcBullets();
+        calcDamage();
         calcEnemy();
         calcDamage();
         moveStage();
@@ -259,13 +260,13 @@ function calcDamage()
         var hit = enemego.getAttribute('hit');
         
         var heroX = hero.offsetLeft;
-        var heroY = hero.offsetTop+2;
+        var heroY = hero.offsetTop+4;
         var heroW = hero.offsetWidth;
-        var heroH = hero.offsetHeight-2;
+        var heroH = hero.offsetHeight-4;
 
         if(hit == 'false')
         {
-            if( enX <= (heroX+heroW))
+            if( enX <= (heroX+heroW) && enX >= heroX)
             {
                 if(( enY <= (heroY+heroH) && enY >= heroY) || ( heroY <= (enY+enH) && heroY >= enY ))
                 {
@@ -280,6 +281,7 @@ function calcDamage()
                         special.className = "layer gameOver";
                         special.style.backgroundImage = "url('../img/game over.gif')";
                         paused = true;
+                        setTimeout(function(){window.location = "credits.html";},3000);
                     }
                 }
             }

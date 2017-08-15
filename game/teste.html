@@ -9,8 +9,12 @@
 		<script type='text/javascript' src="../js/game_functions.js"></script>
 	</head>
 	
-	<body onload="readRun()" onkeypress="jogoKeyPress(event)" onkeyup="jogoKeyRelease(event)" onkeydown="jogoKeyHold(event)">
+	<body onload="start(); readRun()" onkeypress="jogoKeyPress(event)" onkeyup="jogoKeyRelease(event)" onkeydown="jogoKeyHold(event)">
 		<div id="game">
+			<audio autoplay loop>
+				<source src="../music/Lowrez Jam song 1.ogg" type="audio/ogg">
+				Your browser does not support the audio element.
+			</audio>
 			<div id="hud" class="layer"> <!-- HUD ELEMENTS -->
 				<div id="teste" style="background: white url(../img/score.gif) no-repeat top left; height: 5px; width: 42px; opacity: 0.5; padding-left: 22px;">
 					<div id='score1' class='numbA n0'></div>

@@ -2,6 +2,13 @@ var timing = 100;
 if(heroWidth == undefined) var heroWidth = 10;
 if(heroHeight == undefined) var heroHeight = 10;
 
+function start()
+{
+    var chosenHero = getParameterByName("hero");
+    //console.log(chosenHero);
+    hero.style.backgroundImage = "url('../img/"+chosenHero+".gif')";
+}
+
 localStorage.jogo = JSON.stringify({
     pulo:{
         min:2,
