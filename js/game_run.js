@@ -3,10 +3,12 @@ var shooting = false;
 var boss = false;
 var paused = false;
 var enemegoWait = 5;
-var jump = 1.5;
+var jump = 1.75;
 var queda = 1;
 var speed = 2;
 var charge = 0;
+var life = 6;
+var score = 0;
 
 function readRun() //run the game by the time
 {
@@ -174,7 +176,7 @@ function calcBullets()
     
     if(charge <= 0 && shooting)
     {
-        charge = 3;
+        charge = 6;
 
         var stX = hero.offsetLeft+(hero.offsetWidth/2);
         var stY = hero.offsetTop+(hero.offsetHeight/2);
@@ -198,12 +200,15 @@ function calcEnemy()
 {
     if(enemegoWait <= 0 && !boss)
     {
-        enemegoWait = Math.floor((Math.random() * 10) + 10);
+        enemegoWait = Math.floor((Math.random() * 10) + 5);
 
         //corrigir
         var stX = 64;//hero.offsetLeft+(hero.offsetWidth/2);
-        var stY = Math.floor((Math.random() * (60-9)) + 2);//hero.offsetTop+(hero.offsetHeight/2);
-        var strDiv = "<div class='enemy' life=1 style='top:"+stY+"; left:"+stX+"'></div>";
+        var stY = Math.floor((Math.random() * (60-10)) + 2);//hero.offsetTop+(hero.offsetHeight/2);
+        var life = Math.floor((Math.random() * 3) + 1);
+        var strDiv = "<div class='enemy type"+life+"' life='"+life+"' hit='false' score='";
+            strDiv += (life==1)?('5'):(life==2)?('20'):('50');
+            strDiv += "' style='top:"+stY+"; left:"+stX+"'></div>";
 
         action.innerHTML += strDiv;
     }
@@ -216,7 +221,25 @@ function calcEnemy()
 
         enemego.style.left = posX - speed;
         if(enemego.offsetLeft <= -(64+enemego.offsetWidth)) enemego.parentElement.removeChild(enemego);
-        if(enemego.getAttribute('life') <= 0) enemego.parentElement.removeChild(enemego);
+        if(enemego.getAttribute('life') <= 0)
+        {
+            score += Number(enemego.getAttribute('score'));
+            //console.log(score);
+
+            var scStr = score.toString();
+            var pad = "0000000";
+            var ans = pad.substring(0, pad.length - scStr.length) + scStr;
+
+            score1.className = 'numbA n'+ans.substr(0, 1);
+            score2.className = 'numbB n'+ans.substr(1, 1);
+            score3.className = 'numbA n'+ans.substr(2, 1);
+            score4.className = 'numbB n'+ans.substr(3, 1);
+            score5.className = 'numbA n'+ans.substr(4, 1);
+            score6.className = 'numbB n'+ans.substr(5, 1);
+            score7.className = 'numbA n'+ans.substr(6, 1);
+
+            enemego.parentElement.removeChild(enemego);
+        }
     }
 
     enemegoWait--;
@@ -233,6 +256,34 @@ function calcDamage()
         var enY = enemego.offsetTop;
         var enW = enemego.offsetWidth;
         var enH = enemego.offsetHeight;
+        var hit = enemego.getAttribute('hit');
+        
+        var heroX = hero.offsetLeft;
+        var heroY = hero.offsetTop+2;
+        var heroW = hero.offsetWidth;
+        var heroH = hero.offsetHeight-2;
+
+        if(hit == 'false')
+        {
+            if( enX <= (heroX+heroW))
+            {
+                if(( enY <= (heroY+heroH) && enY >= heroY) || ( heroY <= (enY+enH) && heroY >= enY ))
+                {
+                    enemego.setAttribute('hit',true);
+                    life--;
+                    heart3.className = 'heart h'+((life>=6)?2:(life>=5)?1:0);
+                    heart2.className = 'heart h'+((life>=4)?2:(life>=3)?1:0);
+                    heart1.className = 'heart h'+((life>=2)?2:(life>=1)?1:0);
+                    //console.log(life);]
+                    if(life == 0)
+                    {
+                        special.className = "layer gameOver";
+                        special.style.backgroundImage = "url('../img/game over.gif')";
+                        paused = true;
+                    }
+                }
+            }
+        }
 
         if(bullets.length > 0) for (j = 0; j < bullets.length; j++) {
             var shot = bullets[j];
@@ -255,4 +306,4 @@ function calcDamage()
             //if(enemego.getAttribute('life') <= 0) enemego.parentElement.removeChild(enemego);
         }
     }
-} 
+}
